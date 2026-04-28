@@ -1,0 +1,75 @@
+export const metadata = {
+  title: "Getting Started with Deep Learning in 2024",
+  description: "A practical guide to starting your deep learning journey — from choosing frameworks to training your first model.",
+  date: "2024-12-15",
+  tags: ["Deep Learning", "PyTorch", "Tutorial"],
+  readingTime: "5 min read",
+};
+
+# Getting Started with Deep Learning in 2024
+
+Deep learning has transformed nearly every field of technology. Whether you're building computer vision systems, natural language processors, or recommendation engines, understanding the fundamentals is essential.
+
+## Why Deep Learning?
+
+Deep learning models can learn complex patterns from data without explicit programming. Here are some areas where they excel:
+
+- **Computer Vision** — Object detection, image segmentation, style transfer
+- **Natural Language Processing** — Text generation, sentiment analysis, translation
+- **Reinforcement Learning** — Game playing, robotics, autonomous systems
+- **Generative AI** — Image synthesis, music generation, code completion
+
+## Choosing Your Framework
+
+The two most popular frameworks today are **PyTorch** and **TensorFlow**. Here's a quick comparison:
+
+### PyTorch
+
+PyTorch has become the go-to framework for research and is increasingly popular in production:
+
+```python
+import torch
+import torch.nn as nn
+
+class SimpleNet(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(784, 128)
+        self.fc2 = nn.Linear(128, 10)
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        x = self.relu(self.fc1(x))
+        return self.fc2(x)
+```
+
+### TensorFlow
+
+TensorFlow offers a more opinionated, production-ready experience with Keras as its high-level API:
+
+```python
+import tensorflow as tf
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(128, activation='relu', input_shape=(784,)),
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+```
+
+## Getting Started
+
+> The best way to learn deep learning is by building projects. Start small, iterate fast, and don't be afraid to experiment.
+
+1. **Learn the math** — Linear algebra, calculus, and probability
+2. **Pick a framework** — Start with PyTorch for flexibility
+3. **Build projects** — Implement papers, join Kaggle competitions
+4. **Read papers** — Stay current with the latest research
+5. **Contribute** — Open source contributions accelerate learning
+
+## What's Next?
+
+In future posts, I'll dive deeper into specific topics like attention mechanisms, efficient training strategies, and deploying models to production. Stay tuned!
+
+---
+
+*Thanks for reading! Feel free to reach out if you have questions or want to collaborate on a project.*

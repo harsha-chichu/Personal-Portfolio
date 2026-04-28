@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//c/My Stuff/**)",
+      "Bash(cp -r portfolio-temp/* \"personal portfolio/\")",
+      "Bash(cp -r portfolio-temp/.* \"personal portfolio/\")",
+      "Bash(rm -rf portfolio-temp)",
+      "Bash(npx create-next-app@latest portfolio-temp2 --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(rsync -av --exclude='.git' portfolio-temp2/ \"personal portfolio/\")",
+      "Bash(cp -r portfolio-temp2/package.json portfolio-temp2/package-lock.json portfolio-temp2/tsconfig.json portfolio-temp2/postcss.config.mjs \"personal portfolio/\")",
+      "Bash(cp -r portfolio-temp2/src \"personal portfolio/\")",
+      "Bash(cp -r portfolio-temp2/public \"personal portfolio/\")",
+      "WebFetch(domain:reactbits.dev)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:www.reactbits.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(npx next:*)",
+      "Bash(curl -s -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"name\":\"Test\",\"email\":\"test@test.com\",\"subject\":\"Test Subject\",\"message\":\"This is a test message for the contact form\"}')",
+      "Bash(taskkill /PID 25388 /F)",
+      "Bash(cmd //c \"taskkill /PID 25388 /F\")",
+      "Bash(curl -v -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d \"{\\\\\"name\\\\\":\\\\\"Test\\\\\",\\\\\"email\\\\\":\\\\\"test@test.com\\\\\",\\\\\"subject\\\\\":\\\\\"Test Subject\\\\\",\\\\\"message\\\\\":\\\\\"This is a test message for the contact form\\\\\"}\")",
+      "Bash(cmd //c \"powershell -Command \\\\\"Invoke-RestMethod -Uri 'http://localhost:3000/api/chat' -Method POST -ContentType 'application/json' -Body \\('{' + '\\\\\"message\\\\\":\\\\\"hello\\\\\"' + '}'\\) -TimeoutSec 15\\\\\"\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File test-api.ps1)",
+      "Bash(ls \"c:\\\\\\\\My Stuff\\\\\\\\personal portfolio\\\\\\\\src\\\\\\\\mdx-components.tsx\")",
+      "Bash(xargs grep:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0df56kr._.css\")",
+      "Bash(node -e ':*)",
+      "Bash(node -e \"require.resolve\\('motion/react'\\)\")"
+    ]
+  }
+}

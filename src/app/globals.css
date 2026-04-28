@@ -1,26 +1,221 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Theme architecture for Tailwind v4:
+  - @theme inline uses var() references so utilities generate runtime-dynamic values
+  - Accent colors stay STATIC (needed for opacity modifiers like bg-accent-blue/15)
+  - Base colors (bg, surface, text, glass) are dynamic via intermediate --tw-* vars
+  - :root and .dark go inside @layer base to survive Tailwind's processing
+*/
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Dynamic colors — var() so they respond to theme switching */
+  --color-background: var(--tw-bg);
+  --color-surface: var(--tw-surface);
+  --color-surface-light: var(--tw-surface-light);
+  --color-border: var(--tw-border);
+  --color-text-primary: var(--tw-text);
+  --color-text-secondary: var(--tw-text-sec);
+  --color-text-muted: var(--tw-text-mut);
+  --color-glass-bg: var(--tw-glass-bg);
+  --color-glass-border: var(--tw-glass-border);
+  --color-glass-hover: var(--tw-glass-hover);
+  --color-overlay: var(--tw-overlay);
+  --color-navbar-bg: var(--tw-navbar-bg);
+  --color-icon-primary: var(--tw-icon);
+
+  /* Explicit opacity variants for surface/background (can't use /NN on var()) */
+  --color-surface-50: var(--tw-surface-50);
+  --color-surface-90: var(--tw-surface-90);
+  --color-surface-95: var(--tw-surface-95);
+  --color-background-95: var(--tw-bg-95);
+
+  /* Static accent colors — keep fixed so opacity modifiers work */
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-cyan: #06b6d4;
+
+  /* Fonts */
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Animations */
+  --animate-star-movement-bottom: star-movement-bottom linear infinite alternate;
+  --animate-star-movement-top: star-movement-top linear infinite alternate;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /* Light theme (default) */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --tw-bg: #f8fafc;
+    --tw-surface: #ffffff;
+    --tw-surface-light: #f1f5f9;
+    --tw-border: rgba(0, 0, 0, 0.08);
+    --tw-text: #0f172a;
+    --tw-text-sec: #475569;
+    --tw-text-mut: #94a3b8;
+    --tw-glass-bg: rgba(255, 255, 255, 0.7);
+    --tw-glass-border: rgba(0, 0, 0, 0.08);
+    --tw-glass-hover: rgba(0, 0, 0, 0.04);
+    --tw-overlay: rgba(0, 0, 0, 0.03);
+    --tw-navbar-bg: rgba(255, 255, 255, 0.8);
+    --tw-icon: #0f172a;
+    --tw-surface-50: rgba(255, 255, 255, 0.5);
+    --tw-surface-90: rgba(255, 255, 255, 0.9);
+    --tw-surface-95: rgba(255, 255, 255, 0.95);
+    --tw-bg-95: rgba(248, 250, 252, 0.95);
+    color-scheme: light;
+  }
+
+  /* Dark theme */
+  .dark {
+    --tw-bg: #0a0a0f;
+    --tw-surface: #12121a;
+    --tw-surface-light: #1a1a2e;
+    --tw-border: rgba(255, 255, 255, 0.06);
+    --tw-text: #e4e4e7;
+    --tw-text-sec: #a1a1aa;
+    --tw-text-mut: #71717a;
+    --tw-glass-bg: rgba(255, 255, 255, 0.03);
+    --tw-glass-border: rgba(255, 255, 255, 0.08);
+    --tw-glass-hover: rgba(255, 255, 255, 0.05);
+    --tw-overlay: rgba(255, 255, 255, 0.05);
+    --tw-navbar-bg: rgba(18, 18, 26, 0.8);
+    --tw-icon: white;
+    --tw-surface-50: rgba(18, 18, 26, 0.5);
+    --tw-surface-90: rgba(18, 18, 26, 0.9);
+    --tw-surface-95: rgba(18, 18, 26, 0.95);
+    --tw-bg-95: rgba(10, 10, 15, 0.95);
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--tw-bg);
+    color: var(--tw-text);
+    font-family: var(--font-body), system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: rgba(139, 92, 246, 0.3);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--tw-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8b5cf6;
+    border-radius: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass {
+    background: var(--tw-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--tw-glass-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .glass {
+    box-shadow: none;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(20px, 40px) scale(1.05);
+  }
+}
+
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
 }
