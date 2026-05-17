@@ -132,7 +132,7 @@ export const skills: Skill[] = [
   { name: "SQL", level: 80, icon: "postgresql", category: "languages" },
   // Frameworks
   { name: "PyTorch", level: 92, icon: "pytorch", category: "frameworks" },
-  { name: "TensorFlow", level: 85, icon: "tensorflow", category: "frameworks" },
+  { name: "LangGraph", level: 85, icon: "langgraph", category: "frameworks" },
   { name: "Next.js", level: 80, icon: "nextdotjs", category: "frameworks" },
   { name: "FastAPI", level: 88, icon: "fastapi", category: "frameworks" },
   // ML/AI
@@ -155,7 +155,7 @@ export const projects: Project[] = [
       "A real-time neural style transfer application using deep convolutional neural networks. Supports multiple artistic styles with GPU-accelerated inference.",
     image: "https://easydrawingguides.com/wp-content/uploads/2019/03/how-to-draw-katsuki-bakugou-from-my-hero-academia-featured-image-1200-735x1026.png",
     tags: ["PyTorch", "CUDA", "FastAPI", "React"],
-    github: "https://github.com",
+    // github: "https://github.com",
     live: "https://example.com",
     featured: true,
   },
@@ -164,9 +164,9 @@ export const projects: Project[] = [
     title: "AI-Powered Document Analyzer",
     description:
       "An intelligent document processing pipeline using transformer models for extraction, classification, and summarization of complex documents.",
-    image: "/images/projects/project-2.png",
+    image: "public/project1.png",
     tags: ["Transformers", "spaCy", "Python", "AWS"],
-    github: "https://github.com",
+    // github: "https://github.com",
     live: "https://1klick2digiworld.com/",
     featured: true,
   },
@@ -177,7 +177,7 @@ export const projects: Project[] = [
       "Reinforcement learning system for autonomous drone navigation in complex 3D environments with obstacle avoidance and path optimization.",
     image: "/images/projects/project-3.png",
     tags: ["RL", "PyTorch", "ROS", "C++"],
-    github: "https://github.com",
+    // github: "https://github.com",
     live: "https://vedantagranite.com/",
     featured: false,
   },
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       "Real-time social media sentiment analysis platform with interactive visualizations and trend detection powered by fine-tuned BERT models.",
     image: "/images/projects/project-4.png",
     tags: ["BERT", "Next.js", "D3.js", "PostgreSQL"],
-    github: "https://github.com",
+    // github: "https://github.com",
     live: "https://vedantaexport.com/",
     featured: false,
   },
@@ -223,11 +223,11 @@ export const publications: Publication[] = [
 export const achievements: Achievement[] = [
   {
     id: "1",
-    title: "Best Paper Award",
-    organization: "ICML 2024",
-    date: "2024",
+    title: "Grand Finale Winner - CODE-FOR-INDIA Hackathon",
+    organization: "CODE-FOR-INDIA",
+    date: "2023",
     description:
-      "Received the Best Paper Award for our work on efficient attention mechanisms at the International Conference on Machine Learning.",
+      "Led a team of 5 members in the 2023 CODE-FOR-INDIA 48-Hour Hackathon, winning the Grand Finale.",
     icon: "trophy",
   },
   {

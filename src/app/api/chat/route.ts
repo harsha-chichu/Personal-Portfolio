@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import Groq from "groq-sdk";
 import {
   personalInfo,
   skills,
@@ -106,9 +106,9 @@ export async function POST(request: Request) {
 
     const lastMessage = chatMessages[chatMessages.length - 1]?.content || "";
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
 
-    if (!apiKey || !apiKey.startsWith("sk-ant-")) {
+    if (!apiKey) {
       return NextResponse.json({
         reply: getFallbackResponse(lastMessage),
       });
@@ -120,17 +120,18 @@ export async function POST(request: Request) {
       content: m.content,
     }));
 
-    const client = new Anthropic({ apiKey });
+    const client = new Groq({ apiKey });
 
-    const response = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
+    const response = await client.chat.completions.create({
+      model: "llama-3.1-8b-instant",
       max_tokens: 200,
-      system: SYSTEM_PROMPT,
-      messages: recentMessages,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...recentMessages,
+      ],
     });
 
-    const textBlock = response.content.find((b) => b.type === "text");
-    const reply = textBlock ? textBlock.text : "Sorry, I couldn't generate a response.";
+    const reply = response.choices[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
 
     return NextResponse.json({ reply });
   } catch (error) {

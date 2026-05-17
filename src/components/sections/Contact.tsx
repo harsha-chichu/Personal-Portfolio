@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GradientBlob } from "@/components/ui/GradientBlob";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import StarBorder from "@/components/reactbits/StarBorder";
+import { Toast } from "@/components/ui/Toast";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -21,6 +22,7 @@ export function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   useGSAP(
     () => {
@@ -106,11 +108,13 @@ export function Contact() {
 
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
+      setToast({ message: "Message sent! I'll get back to you soon.", type: "success" });
 
       setTimeout(() => setStatus("idle"), 4000);
     } catch {
       setStatus("error");
       setErrorMessage("Failed to send message. Please try again.");
+      setToast({ message: "Failed to send message. Please try again.", type: "error" });
     }
   };
 
@@ -119,6 +123,14 @@ export function Contact() {
   const isDisabled = status === "loading";
 
   return (
+    <>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     <section id="contact" ref={sectionRef} className="relative section-padding">
       <GradientBlob color="cyan" size="400px" className="-left-40 bottom-0 opacity-10" />
 
@@ -276,5 +288,6 @@ export function Contact() {
         </div>
       </div>
     </section>
+    </>
   );
 }
