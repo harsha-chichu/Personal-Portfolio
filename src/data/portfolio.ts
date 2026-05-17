@@ -86,28 +86,25 @@ export interface NavLink {
 // ── Data ──
 
 export const personalInfo: PersonalInfo = {
-  name: "Harsha vardhan",
+  name: "Harshavardhan Sunnam",
   title: "AI Engineer & Freelancer",
   tagline: "Building intelligent systems that push the boundaries of what's possible",
   bio: [
-    "I'm an AI developer who loves what I do - exploring AI and ML, building intelligent agents, RAG-based bots, and automation systems that actually make a difference. With a solid foundation in mathematics and computer science, I have a published paper in deep learning, and freelancing is something I truly enjoy, I focus on creating solutions that are both innovative and practical. working closely with startups and enterprises to bring their AI ideas to life.",
-    // "My research has been published in top-tier conferences, and I actively contribute to the open-source AI community. As a freelancer, I help startups and enterprises leverage AI to transform their products and workflows.",
+    "AI/ML Engineer with 1+ year of hands-on experience building, deploying, and evaluating machine learning and LLM-based systems. Currently developing LangGraph-based agentic AI systems and RAG applications using LangChain and vector databases. I've worked on end-to-end ML pipelines, published research in healthcare AI, and genuinely enjoy freelancing — building solutions that are both innovative and practical for startups and enterprises.",
   ],
   email: "harshachinnu129@gmail.com",
-  location: "Banglore, India",
+  location: "Bangalore, India",
   avatar: "https://easydrawingguides.com/wp-content/uploads/2019/03/how-to-draw-katsuki-bakugou-from-my-hero-academia-featured-image-1200-735x1026.png",
   resume: "file:///C:/Users/Dell/Downloads/Harshavardhan_SDE_Resume.pdf",
   stats: [
-    { label: "Years Experience", value: 2, suffix: "+" },
-    { label: "Projects Completed", value: 30, suffix: "+" },
-    { label: "Happy Clients", value: 20, suffix: "+" },
+    { label: "Years Experience", value: 1, suffix: "+" },
+    { label: "Projects Completed", value: 10, suffix: "+" },
+    { label: "Happy Clients", value: 5, suffix: "+" },
     { label: "Research Papers", value: 1, suffix: "" },
   ],
   socials: [
     { platform: "GitHub", url: "https://github.com/harsha-chichu", icon: "github" },
     { platform: "LinkedIn", url: "https://www.linkedin.com/in/harsha-vardhan12/", icon: "linkedin" },
-    // { platform: "Instagram", url: "https://instagram.com", icon: "instagram" },
-    // { platform: "Google Scholar", url: "https://scholar.google.com", icon: "scholar" },
   ],
 };
 
@@ -127,69 +124,63 @@ export const navLinks: NavLink[] = [
 export const skills: Skill[] = [
   // Languages
   { name: "Python", level: 95, icon: "python", category: "languages" },
-  { name: "TypeScript", level: 85, icon: "typescript", category: "languages" },
+  { name: "JavaScript", level: 80, icon: "javascript", category: "languages" },
   { name: "C++", level: 70, icon: "cplusplus", category: "languages" },
-  { name: "SQL", level: 80, icon: "postgresql", category: "languages" },
-  // Frameworks
-  { name: "PyTorch", level: 92, icon: "pytorch", category: "frameworks" },
-  { name: "LangGraph", level: 85, icon: "langgraph", category: "frameworks" },
+  { name: "SQL", level: 78, icon: "postgresql", category: "languages" },
+  // Frameworks & Libraries
+  { name: "PyTorch", level: 88, icon: "pytorch", category: "frameworks" },
+  { name: "LangChain", level: 90, icon: "langchain", category: "frameworks" },
+  { name: "LangGraph", level: 87, icon: "langgraph", category: "frameworks" },
+  { name: "FastAPI", level: 85, icon: "fastapi", category: "frameworks" },
   { name: "Next.js", level: 80, icon: "nextdotjs", category: "frameworks" },
-  { name: "FastAPI", level: 88, icon: "fastapi", category: "frameworks" },
-  // ML/AI
-  { name: "Deep Learning", level: 93, icon: "brain", category: "ml" },
-  { name: "Computer Vision", level: 90, icon: "opencv", category: "ml" },
-  { name: "NLP", level: 85, icon: "huggingface", category: "ml" },
-  { name: "Reinforcement Learning", level: 75, icon: "rl", category: "ml" },
-  // Tools
-  { name: "Docker", level: 82, icon: "docker", category: "tools" },
-  { name: "AWS", level: 78, icon: "aws", category: "tools" },
-  { name: "Git", level: 90, icon: "git", category: "tools" },
-  { name: "MLflow", level: 80, icon: "mlflow", category: "tools" },
+  // AI & Machine Learning
+  { name: "RAG Systems", level: 90, icon: "brain", category: "ml" },
+  { name: "Deep Learning", level: 88, icon: "pytorch", category: "ml" },
+  { name: "Computer Vision", level: 85, icon: "opencv", category: "ml" },
+  { name: "Agentic AI", level: 87, icon: "brain", category: "ml" },
+  // DevOps & Tools
+  { name: "Git & GitHub", level: 88, icon: "git", category: "tools" },
+  { name: "Docker", level: 75, icon: "docker", category: "tools" },
+  { name: "AWS", level: 72, icon: "aws", category: "tools" },
+  { name: "N8N", level: 70, icon: "n8n", category: "tools" },
 ];
 
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Neural Style Transfer Engine",
+    title: "SmartHire – AI Hiring & Interview Automation",
     description:
-      "A real-time neural style transfer application using deep convolutional neural networks. Supports multiple artistic styles with GPU-accelerated inference.",
-    image: "https://easydrawingguides.com/wp-content/uploads/2019/03/how-to-draw-katsuki-bakugou-from-my-hero-academia-featured-image-1200-735x1026.png",
-    tags: ["PyTorch", "CUDA", "FastAPI", "React"],
-    // github: "https://github.com",
-    live: "https://example.com",
+      "LangGraph-based multi-agent system to automate job description generation and post-interview candidate reports. Features structured planning, execution, validation stages, and end-to-end observability with Langfuse.",
+    image: "/project1.png",
+    tags: ["LangGraph", "LangChain", "Langfuse", "DeepAgents", "AWS", "Python"],
     featured: true,
   },
   {
     id: "2",
-    title: "AI-Powered Document Analyzer",
+    title: "Artist Portfolio & Booking Platform",
     description:
-      "An intelligent document processing pipeline using transformer models for extraction, classification, and summarization of complex documents.",
-    image: "public/project1.png",
-    tags: ["Transformers", "spaCy", "Python", "AWS"],
-    // github: "https://github.com",
+      "Full-stack portfolio and booking platform with real-time booking workflows, custom admin dashboard, and a GenAI-powered chatbot using LangChain with RAG pipelines and vector databases.",
+    image: "/project1.png",
+    tags: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
     live: "https://1klick2digiworld.com/",
     featured: true,
   },
   {
     id: "3",
-    title: "Autonomous Drone Navigation",
+    title: "Accused Detection System",
     description:
-      "Reinforcement learning system for autonomous drone navigation in complex 3D environments with obstacle avoidance and path optimization.",
-    image: "/images/projects/project-3.png",
-    tags: ["RL", "PyTorch", "ROS", "C++"],
-    // github: "https://github.com",
-    live: "https://vedantagranite.com/",
+      "Real-time accused detection system using OpenCV on live video feeds, enabling instant identification and alerting. Reduced manual search effort by ~80% and improved situational responsiveness.",
+    image: "/project1.png",
+    tags: ["OpenCV", "YOLO", "Python", "Computer Vision"],
     featured: false,
   },
   {
     id: "4",
-    title: "Sentiment Analysis Dashboard",
+    title: "Employee Burnout Prediction",
     description:
-      "Real-time social media sentiment analysis platform with interactive visualizations and trend detection powered by fine-tuned BERT models.",
-    image: "/images/projects/project-4.png",
-    tags: ["BERT", "Next.js", "D3.js", "PostgreSQL"],
-    // github: "https://github.com",
-    live: "https://vedantaexport.com/",
+      "Machine learning model to predict employee burn rate achieving 93% accuracy on validation data. Processed 10,000+ HR records with feature engineering and hyperparameter-tuned scikit-learn models.",
+    image: "/project1.png",
+    tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
     featured: false,
   },
 ];
@@ -223,7 +214,7 @@ export const publications: Publication[] = [
 export const achievements: Achievement[] = [
   {
     id: "1",
-    title: "Grand Finale Winner - CODE-FOR-INDIA Hackathon",
+    title: "Grand Finale Winner – CODE-FOR-INDIA Hackathon",
     organization: "CODE-FOR-INDIA",
     date: "2023",
     description:
@@ -232,29 +223,29 @@ export const achievements: Achievement[] = [
   },
   {
     id: "2",
-    title: "Google AI Research Grant",
-    organization: "Google Research",
-    date: "2023",
+    title: "Published Research in Healthcare AI",
+    organization: "IJARESM",
+    date: "2025",
     description:
-      "Awarded a $50,000 research grant to further develop efficient deep learning architectures for edge computing.",
+      "Published research on Automated White Blood Cell Subtype Classification using deep learning, achieving pathologist-level accuracy on peripheral blood smear images.",
     icon: "award",
   },
   {
     id: "3",
-    title: "Kaggle Grandmaster",
-    organization: "Kaggle",
+    title: "25+ Security Vulnerabilities Discovered",
+    organization: "Supraja Technologies",
     date: "2023",
     description:
-      "Achieved Grandmaster status on Kaggle with multiple gold medals in computer vision and NLP competitions.",
+      "Discovered and validated 25+ vulnerabilities across 6 applications including XSS, IDOR, SQL injection, and CSRF during web application penetration testing, reducing risk exposure by ~60%.",
     icon: "medal",
   },
   {
     id: "4",
-    title: "Open Source Contributor Award",
-    organization: "PyTorch Foundation",
-    date: "2022",
+    title: "93% Accuracy – Employee Burnout Prediction",
+    organization: "Edunet Foundation (IBM SkillsBuild)",
+    date: "2023",
     description:
-      "Recognized for significant contributions to the PyTorch ecosystem, including optimized training utilities and model architectures.",
+      "Built an ML model achieving 93% accuracy on 10,000+ HR records for predicting employee burnout, supporting data-driven HR decision-making.",
     icon: "star",
   },
 ];
@@ -262,41 +253,41 @@ export const achievements: Achievement[] = [
 export const services: Service[] = [
   {
     id: "1",
-    title: "AI/ML Consulting",
+    title: "Agentic AI & LLM Systems",
     description:
-      "Strategic guidance on integrating AI into your business processes. From feasibility analysis to architecture design and implementation roadmaps.",
+      "Building production-grade agentic AI systems using LangGraph and LangChain — from multi-agent orchestration to RAG-powered chatbots and document Q&A pipelines.",
     icon: "brain",
     features: [
-      "AI feasibility assessment",
-      "Architecture design",
-      "Technology stack selection",
-      "ROI analysis & reporting",
+      "LangGraph multi-agent workflows",
+      "RAG pipelines with vector databases",
+      "LLM evaluation & observability (Langfuse)",
+      "AWS Bedrock deployment",
     ],
   },
   {
     id: "2",
-    title: "Custom Model Development",
+    title: "ML Model Development",
     description:
-      "End-to-end development of custom machine learning models tailored to your specific use case, from data preparation to deployment.",
+      "End-to-end machine learning pipelines — data preprocessing, feature engineering, model training, hyperparameter tuning, and evaluation for real-world problems.",
     icon: "code",
     features: [
-      "Data pipeline development",
+      "Data pipeline & feature engineering",
       "Model training & optimization",
+      "Computer vision (YOLO, OpenCV)",
       "Performance benchmarking",
-      "Production deployment",
     ],
   },
   {
     id: "3",
     title: "Full-Stack AI Applications",
     description:
-      "Building complete AI-powered web applications with modern tech stacks, from responsive frontends to scalable ML backends.",
+      "Complete AI-powered web applications with Next.js frontends, FastAPI backends, and integrated GenAI features — delivered production-ready.",
     icon: "layers",
     features: [
       "Next.js / React frontends",
-      "FastAPI / Node.js backends",
-      "Cloud infrastructure (AWS/GCP)",
-      "CI/CD & monitoring",
+      "FastAPI backend services",
+      "GenAI chatbot integration",
+      "Supabase / PostgreSQL databases",
     ],
   },
 ];
@@ -305,50 +296,98 @@ export const experience: Experience[] = [
   {
     id: "1",
     role: "AI Engineer",
-    company: "KrtrimaIQ",
+    company: "krtrimaIQ Cognitive Solutions",
     type: "full-time",
-    startDate: "Jan 2025",
+    startDate: "Nov 2025",
     endDate: "Present",
     description:
-      "Working as a full-time AI Engineer building production-grade machine learning systems and deploying scalable AI solutions.",
+      "Developing and deploying LangGraph-based agentic AI systems for the SmartHire platform — an AI hiring and interview automation product. Progressed from AI Intern (Nov 2025) to AI Engineer (Jan 2026).",
     highlights: [
-      "Designed and deployed end-to-end ML pipelines serving 1M+ daily predictions",
-      "Led the development of a real-time NLP system for customer support automation",
-      "Optimized model inference latency by 40% through quantization and caching strategies",
+      "Designed multiple LLM-based agents to automate job description generation and post-interview candidate report creation",
+      "Orchestrated agent workflows using LangGraph with structured planning, execution, and validation stages",
+      "Implemented end-to-end tracing and observability using Langfuse for prompt-level debugging and performance analysis",
+      "Integrated a dedicated evaluation agent to assess response quality, consistency, and relevance across interview outcomes",
     ],
-    techStack: ["PyTorch", "AWS", "FastAPI", "Docker", "Kubernetes"],
+    techStack: ["Python", "LangChain", "LangGraph", "Langfuse", "DeepAgents", "AWS"],
   },
   {
     id: "2",
-    role: "Machine Learning Intern",
-    company: "DataVision Labs",
-    type: "internship",
-    startDate: "Jun 2023",
-    endDate: "Dec 2023",
+    role: "GenAI & Full-Stack Freelancer",
+    company: "Freelance",
+    type: "freelance",
+    startDate: "Dec 2024",
+    endDate: "Sep 2025",
     description:
-      "Interned with the computer vision team, contributing to object detection and image segmentation projects for autonomous systems.",
+      "Designed and delivered a full-stack portfolio and booking platform for an artist, including a GenAI-powered chatbot with RAG pipelines and vector databases.",
     highlights: [
-      "Built a custom object detection model achieving 92% mAP on proprietary dataset",
-      "Developed data augmentation pipelines that improved model robustness by 25%",
-      "Co-authored internal research paper on efficient attention mechanisms",
+      "Built real-time booking workflows with a custom admin dashboard enabling 80+ successful booking interactions",
+      "Architected a GenAI-powered chatbot using LangChain for natural language interactions",
+      "Integrated LLMs, RAG pipelines, and vector databases for accurate, context-aware query handling",
     ],
-    techStack: ["PyTorch", "OpenCV", "Python", "TensorFlow", "GCP"],
+    techStack: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
   },
   {
     id: "3",
-    role: "Research Intern",
-    company: "University AI Lab",
+    role: "Research Intern – Nanoindentation AI/ML",
+    company: "Academic Collaboration",
     type: "internship",
-    startDate: "Jan 2023",
-    endDate: "May 2023",
+    startDate: "Mar 2023",
+    endDate: "Nov 2023",
     description:
-      "Conducted research on self-supervised learning methods for visual representation learning under faculty supervision.",
+      "Applied machine learning to model and predict mechanical behavior from nanoindentation tests on laser-treated materials, bridging materials science and AI.",
     highlights: [
-      "Implemented contrastive learning frameworks and benchmarked against baselines",
-      "Published findings at CVPR 2023 as second author",
-      "Presented research at two internal symposiums",
+      "Built end-to-end data pipelines for preprocessing and feature engineering on 80,000+ nanoindentation tests",
+      "Trained regression models achieving >85% R² on unseen experimental data",
+      "Enabled cross-comparison and insight generation across 3+ laser processing configurations",
     ],
-    techStack: ["PyTorch", "Weights & Biases", "Python", "LaTeX"],
+    techStack: ["Python", "PyTorch", "Pandas", "NumPy", "Scikit-learn"],
+  },
+  {
+    id: "4",
+    role: "AI/ML Intern",
+    company: "Edunet Foundation (IBM SkillsBuild)",
+    type: "internship",
+    startDate: "Jun 2023",
+    endDate: "Jul 2023",
+    description:
+      "Developed a machine learning model to predict employee burnout rate, processing and analyzing HR records with feature engineering and model tuning.",
+    highlights: [
+      "Achieved 93% accuracy on validation data for employee burnout prediction",
+      "Processed and analyzed 10,000+ HR records handling missing values, outliers, and categorical encoding",
+      "Engineered domain-relevant features (workload, tenure, performance indicators) to improve model signal quality",
+    ],
+    techStack: ["Python", "Pandas", "NumPy", "Scikit-learn"],
+  },
+  {
+    id: "5",
+    role: "Web Developer Intern",
+    company: "PHN Technologies",
+    type: "internship",
+    startDate: "Apr 2023",
+    endDate: "Jun 2023",
+    description:
+      "Developed and maintained responsive web applications, translating client requirements into reusable UI components and implementing SEO optimizations.",
+    highlights: [
+      "Built responsive web applications ensuring cross-browser and cross-device compatibility",
+      "Implemented SEO and page-load optimizations contributing to better discoverability and user engagement",
+    ],
+    techStack: ["HTML", "CSS", "JavaScript", "React"],
+  },
+  {
+    id: "6",
+    role: "Cybersecurity Intern",
+    company: "Supraja Technologies",
+    type: "internship",
+    startDate: "Feb 2023",
+    endDate: "Jun 2023",
+    description:
+      "Conducted web application penetration testing using Burp Suite and OWASP Top 10–aligned risk assessment, working directly with developers to verify and patch vulnerabilities.",
+    highlights: [
+      "Discovered and validated 25+ vulnerabilities across 6 applications including XSS, IDOR, SQL injection, and CSRF",
+      "Reduced application risk exposure by ~60% through exploit reproduction, fix verification, and retesting",
+      "Delivered secure coding training covering input validation, authentication hardening, and session management",
+    ],
+    techStack: ["Burp Suite", "Postman", "Python"],
   },
 ];
 
