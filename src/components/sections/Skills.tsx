@@ -52,7 +52,7 @@ export function Skills() {
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple" />
                   {skillCategories[category]}
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
                   {skills
                     .filter((s) => s.category === category)
                     .map((skill) => (

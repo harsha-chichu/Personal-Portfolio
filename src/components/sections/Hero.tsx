@@ -44,7 +44,7 @@ export function Hero() {
           delay={150}
           animateBy="words"
           direction="bottom"
-          className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight justify-center"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight justify-center"
           stepDuration={0.5}
         />
 
@@ -78,7 +78,7 @@ export function Hero() {
           style={{ animation: "bounce-down 2s ease-in-out infinite" }}
         >
           <span className="text-text-muted text-xs font-mono">scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-text-muted to-transparent" />
+          <div className="w-px h-8 bg-linear-to-b from-text-muted to-transparent" />
         </div>
       </div>
     </section>

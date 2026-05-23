@@ -124,25 +124,24 @@ export const navLinks: NavLink[] = [
 export const skills: Skill[] = [
   // Languages
   { name: "Python", level: 95, icon: "python", category: "languages" },
-  { name: "JavaScript", level: 80, icon: "javascript", category: "languages" },
-  { name: "C++", level: 70, icon: "cplusplus", category: "languages" },
-  { name: "SQL", level: 78, icon: "postgresql", category: "languages" },
+  { name: "SQL", level: 80, icon: "postgresql", category: "languages" },
+  { name: "JavaScript", level: 78, icon: "javascript", category: "languages" },
   // Frameworks & Libraries
+  { name: "LangChain", level: 92, icon: "langchain", category: "frameworks" },
+  { name: "LangGraph", level: 88, icon: "langgraph", category: "frameworks" },
   { name: "PyTorch", level: 88, icon: "pytorch", category: "frameworks" },
-  { name: "LangChain", level: 90, icon: "langchain", category: "frameworks" },
-  { name: "LangGraph", level: 87, icon: "langgraph", category: "frameworks" },
   { name: "FastAPI", level: 85, icon: "fastapi", category: "frameworks" },
   { name: "Next.js", level: 80, icon: "nextdotjs", category: "frameworks" },
   // AI & Machine Learning
-  { name: "RAG Systems", level: 90, icon: "brain", category: "ml" },
-  { name: "Deep Learning", level: 88, icon: "pytorch", category: "ml" },
-  { name: "Computer Vision", level: 85, icon: "opencv", category: "ml" },
-  { name: "Agentic AI", level: 87, icon: "brain", category: "ml" },
+  { name: "RAG Systems", level: 92, icon: "brain", category: "ml" },
+  { name: "Agentic AI", level: 88, icon: "brain", category: "ml" },
+  { name: "Deep Learning", level: 86, icon: "pytorch", category: "ml" },
+  { name: "Computer Vision", level: 82, icon: "opencv", category: "ml" },
   // DevOps & Tools
-  { name: "Git & GitHub", level: 88, icon: "git", category: "tools" },
-  { name: "Docker", level: 75, icon: "docker", category: "tools" },
-  { name: "AWS", level: 72, icon: "aws", category: "tools" },
-  { name: "N8N", level: 70, icon: "n8n", category: "tools" },
+  { name: "AWS", level: 80, icon: "aws", category: "tools" },
+  { name: "Kubernetes", level: 72, icon: "kubernetes", category: "tools" },
+  { name: "Langfuse", level: 85, icon: "langfuse", category: "tools" },
+  { name: "Git", level: 90, icon: "git", category: "tools" },
 ];
 
 export const projects: Project[] = [
@@ -150,37 +149,37 @@ export const projects: Project[] = [
     id: "1",
     title: "SmartHire – AI Hiring & Interview Automation",
     description:
-      "LangGraph-based multi-agent system to automate job description generation and post-interview candidate reports. Features structured planning, execution, validation stages, and end-to-end observability with Langfuse.",
+      "LangGraph multi-agent platform orchestrating 6 specialized LLM agents for JD generation, Q&A, coding questions, shortlisting, interview evaluation, and report generation. Uses AWS Bedrock Guardrails and Langfuse for observability.",
     image: "/project1.png",
-    tags: ["LangGraph", "LangChain", "Langfuse", "DeepAgents", "AWS", "Python"],
+    tags: ["LangGraph", "LangChain", "AWS Bedrock", "Langfuse", "Python"],
     featured: true,
   },
   {
     id: "2",
-    title: "Artist Portfolio & Booking Platform",
+    title: "ACORD Document Extraction Pipeline",
     description:
-      "Full-stack portfolio and booking platform with real-time booking workflows, custom admin dashboard, and a GenAI-powered chatbot using LangChain with RAG pipelines and vector databases.",
+      "Multi-stage LOB identification and extraction pipeline using PageIndex retrieval and regex pattern matching. Integrates Gemini Vision API and GPT-4o with PyMuPDF and Camelot, deployed on Kubernetes for US-based insurance brokers.",
     image: "/project1.png",
-    tags: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
-    live: "https://1klick2digiworld.com/",
+    tags: ["PageIndex", "Gemini Vision", "GPT-4o", "Kubernetes", "Python"],
     featured: true,
   },
   {
     id: "3",
-    title: "Accused Detection System",
+    title: "Artist Portfolio & Booking Platform",
     description:
-      "Real-time accused detection system using OpenCV on live video feeds, enabling instant identification and alerting. Reduced manual search effort by ~80% and improved situational responsiveness.",
+      "Full-stack portfolio and booking platform with real-time booking workflows, custom admin dashboard enabling 80+ booking interactions, and a GenAI chatbot built with LangChain, RAG, and vector databases.",
     image: "/project1.png",
-    tags: ["OpenCV", "YOLO", "Python", "Computer Vision"],
+    tags: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
+    live: "https://1klick2digiworld.com/",
     featured: false,
   },
   {
     id: "4",
-    title: "Employee Burnout Prediction",
+    title: "Movie Story Generator",
     description:
-      "Machine learning model to predict employee burn rate achieving 93% accuracy on validation data. Processed 10,000+ HR records with feature engineering and hyperparameter-tuned scikit-learn models.",
+      "AI-powered React app that transforms a single user-provided plot into a complete movie storyline, suggests ideal cast members, and generates a custom movie poster using AI.",
     image: "/project1.png",
-    tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+    tags: ["React", "JavaScript", "AI", "Generative AI"],
     featured: false,
   },
 ];
@@ -223,30 +222,30 @@ export const achievements: Achievement[] = [
   },
   {
     id: "2",
-    title: "Published Research in Healthcare AI",
-    organization: "IJARESM",
-    date: "2025",
+    title: "1st Place – Shark Tank 2.0 Business Competition",
+    organization: "MGIT",
+    date: "2023",
     description:
-      "Published research on Automated White Blood Cell Subtype Classification using deep learning, achieving pathologist-level accuracy on peripheral blood smear images.",
+      "Secured first place in the Shark Tank 2.0 Business Idea Competition for presenting an innovative and viable startup model.",
     icon: "award",
   },
   {
     id: "3",
-    title: "25+ Security Vulnerabilities Discovered",
-    organization: "Supraja Technologies",
+    title: "Co-Student Convenor – MGIT Coding Club",
+    organization: "Mahatma Gandhi Institute of Technology",
     date: "2023",
     description:
-      "Discovered and validated 25+ vulnerabilities across 6 applications including XSS, IDOR, SQL injection, and CSRF during web application penetration testing, reducing risk exposure by ~60%.",
-    icon: "medal",
+      "Served as Co-Student Convenor of the MGIT Coding Club, organizing multiple campus-wide coding events and fostering a developer community.",
+    icon: "star",
   },
   {
     id: "4",
-    title: "93% Accuracy – Employee Burnout Prediction",
-    organization: "Edunet Foundation (IBM SkillsBuild)",
+    title: "Tech Expo Organizer – 300+ Participants",
+    organization: "MGIT",
     date: "2023",
     description:
-      "Built an ML model achieving 93% accuracy on 10,000+ HR records for predicting employee burnout, supporting data-driven HR decision-making.",
-    icon: "star",
+      "Successfully planned and executed the \"Tech Expo\" Technical event, attracting 300+ participants and coordinating end-to-end event logistics.",
+    icon: "medal",
   },
 ];
 
@@ -295,36 +294,36 @@ export const services: Service[] = [
 export const experience: Experience[] = [
   {
     id: "1",
-    role: "AI Engineer",
+    role: "AI Engineer – Team Lead",
     company: "krtrimaIQ Cognitive Solutions",
     type: "full-time",
     startDate: "Nov 2025",
-    endDate: "Present",
+    endDate: "Mar 2026",
     description:
-      "Developing and deploying LangGraph-based agentic AI systems for the SmartHire platform — an AI hiring and interview automation product. Progressed from AI Intern (Nov 2025) to AI Engineer (Jan 2026).",
+      "Led AI engineering across two production platforms: an end-to-end ACORD document extraction pipeline for a US insurance broker (Client: Exdion), and SmartHire — a LangGraph multi-agent hiring automation platform.",
     highlights: [
-      "Designed multiple LLM-based agents to automate job description generation and post-interview candidate report creation",
-      "Orchestrated agent workflows using LangGraph with structured planning, execution, and validation stages",
-      "Implemented end-to-end tracing and observability using Langfuse for prompt-level debugging and performance analysis",
-      "Integrated a dedicated evaluation agent to assess response quality, consistency, and relevance across interview outcomes",
+      "Led team to build a multi-stage LOB identification pipeline using PageIndex retrieval and regex matching; integrated Gemini Vision API and GPT-4o with PyMuPDF and Camelot to extract structured fields from dense ACORD forms",
+      "Deployed the multi-LLM pipeline on Kubernetes, orchestrating Gemini and GPT-4o microservices for structured ACORD extraction delivered to a downstream AI chatbot",
+      "Architected SmartHire with 6 specialized LangGraph agents — JD Generation, Q&A, Coding Questions, Shortlisting, Interview Evaluation, and Report Generation — automating the end-to-end hiring pipeline",
+      "Implemented AWS Bedrock Guardrails and Bedrock Prompt Manager for safety, relevance, and version-controlled prompt delivery across all agents",
+      "Integrated Langfuse for end-to-end observability and prompt-level monitoring across the agentic pipeline",
     ],
-    techStack: ["Python", "LangChain", "LangGraph", "Langfuse", "DeepAgents", "AWS"],
+    techStack: ["Python", "LangGraph", "LangChain", "PageIndex", "AWS Bedrock", "Langfuse", "Kubernetes", "Gemini", "GPT-4o"],
   },
   {
     id: "2",
-    role: "GenAI & Full-Stack Freelancer",
-    company: "Freelance",
+    role: "Freelance AI/ML Engineer",
+    company: "Private Client",
     type: "freelance",
     startDate: "Dec 2024",
-    endDate: "Sep 2025",
+    endDate: "Present",
     description:
-      "Designed and delivered a full-stack portfolio and booking platform for an artist, including a GenAI-powered chatbot with RAG pipelines and vector databases.",
+      "Designing and delivering full-stack AI-powered applications for private clients, combining Next.js frontends with GenAI backends.",
     highlights: [
-      "Built real-time booking workflows with a custom admin dashboard enabling 80+ successful booking interactions",
-      "Architected a GenAI-powered chatbot using LangChain for natural language interactions",
-      "Integrated LLMs, RAG pipelines, and vector databases for accurate, context-aware query handling",
+      "Designed and developed a full-stack portfolio and booking platform for an artist using Next.js, TailwindCSS, and Supabase — enabling 80+ booking interactions with real-time updates and a custom admin dashboard",
+      "Developing a GenAI chatbot with LangChain leveraging LLMs, RAG, and vector databases for natural language queries over structured and unstructured data",
     ],
-    techStack: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
+    techStack: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG", "Python"],
   },
   {
     id: "3",
@@ -334,60 +333,13 @@ export const experience: Experience[] = [
     startDate: "Mar 2023",
     endDate: "Nov 2023",
     description:
-      "Applied machine learning to model and predict mechanical behavior from nanoindentation tests on laser-treated materials, bridging materials science and AI.",
+      "Applied machine learning to predict mechanical behavior from 80,000+ nanoindentation tests on laser-treated materials, bridging materials science and AI.",
     highlights: [
-      "Built end-to-end data pipelines for preprocessing and feature engineering on 80,000+ nanoindentation tests",
-      "Trained regression models achieving >85% R² on unseen experimental data",
-      "Enabled cross-comparison and insight generation across 3+ laser processing configurations",
+      "Designed and implemented robust data pipelines for cleaning, feature extraction, and model training using Python/PyTorch",
+      "Achieved >85% R² score in regression tasks on unseen experimental data",
+      "Strengthened interdisciplinary research across 3+ laser processing configurations through predictive modeling and data-driven analysis",
     ],
     techStack: ["Python", "PyTorch", "Pandas", "NumPy", "Scikit-learn"],
-  },
-  {
-    id: "4",
-    role: "AI/ML Intern",
-    company: "Edunet Foundation (IBM SkillsBuild)",
-    type: "internship",
-    startDate: "Jun 2023",
-    endDate: "Jul 2023",
-    description:
-      "Developed a machine learning model to predict employee burnout rate, processing and analyzing HR records with feature engineering and model tuning.",
-    highlights: [
-      "Achieved 93% accuracy on validation data for employee burnout prediction",
-      "Processed and analyzed 10,000+ HR records handling missing values, outliers, and categorical encoding",
-      "Engineered domain-relevant features (workload, tenure, performance indicators) to improve model signal quality",
-    ],
-    techStack: ["Python", "Pandas", "NumPy", "Scikit-learn"],
-  },
-  {
-    id: "5",
-    role: "Web Developer Intern",
-    company: "PHN Technologies",
-    type: "internship",
-    startDate: "Apr 2023",
-    endDate: "Jun 2023",
-    description:
-      "Developed and maintained responsive web applications, translating client requirements into reusable UI components and implementing SEO optimizations.",
-    highlights: [
-      "Built responsive web applications ensuring cross-browser and cross-device compatibility",
-      "Implemented SEO and page-load optimizations contributing to better discoverability and user engagement",
-    ],
-    techStack: ["HTML", "CSS", "JavaScript", "React"],
-  },
-  {
-    id: "6",
-    role: "Cybersecurity Intern",
-    company: "Supraja Technologies",
-    type: "internship",
-    startDate: "Feb 2023",
-    endDate: "Jun 2023",
-    description:
-      "Conducted web application penetration testing using Burp Suite and OWASP Top 10–aligned risk assessment, working directly with developers to verify and patch vulnerabilities.",
-    highlights: [
-      "Discovered and validated 25+ vulnerabilities across 6 applications including XSS, IDOR, SQL injection, and CSRF",
-      "Reduced application risk exposure by ~60% through exploit reproduction, fix verification, and retesting",
-      "Delivered secure coding training covering input validation, authentication hardening, and session management",
-    ],
-    techStack: ["Burp Suite", "Postman", "Python"],
   },
 ];
 

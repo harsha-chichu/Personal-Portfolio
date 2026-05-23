@@ -69,7 +69,7 @@ export function Achievements() {
           {/* Timeline line (desktop only) */}
           <div
             ref={lineRef}
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-blue via-accent-purple to-transparent origin-top"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-accent-blue via-accent-purple to-transparent origin-top"
           />
 
           <div className="space-y-6">
@@ -78,7 +78,7 @@ export function Achievements() {
                 key={achievement.id}
                 className={`achievement-card md:w-[calc(50%-1.5rem)] ${
                   i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
-                }`}
+                } pl-4 border-l-2 border-accent-purple/30 md:border-l-0 md:pl-0`}
               >
                 <SpotlightCard
                   spotlightColor="rgba(139, 92, 246, 0.12)"

@@ -130,7 +130,7 @@ export function Navbar() {
                       )}
                     >
                       {active && (
-                        <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent-blue/80 to-accent-purple/80 -z-10" />
+                        <span className="absolute inset-0 rounded-lg bg-linear-to-r from-accent-blue/80 to-accent-purple/80 -z-10" />
                       )}
                       {link.label}
                     </a>
@@ -150,7 +150,7 @@ export function Navbar() {
                     )}
                   >
                     {active && (
-                      <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent-blue/80 to-accent-purple/80 -z-10" />
+                      <span className="absolute inset-0 rounded-lg bg-linear-to-r from-accent-blue/80 to-accent-purple/80 -z-10" />
                     )}
                     {link.label}
                   </Link>
@@ -165,7 +165,7 @@ export function Navbar() {
                 href={personalInfo.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-lg bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:shadow-lg hover:shadow-accent-purple/25 transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-lg bg-linear-to-r from-accent-blue to-accent-purple text-white hover:shadow-lg hover:shadow-accent-purple/25 transition-all duration-300 hover:-translate-y-0.5"
               >
                 Resume
               </a>
@@ -181,7 +181,7 @@ export function Navbar() {
                 <span
                   className={cn(
                     "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
-                    mobileOpen && "rotate-45 translate-y-[7px]"
+                    mobileOpen && "rotate-45 translate-y-1.75"
                   )}
                 />
                 <span
@@ -193,7 +193,7 @@ export function Navbar() {
                 <span
                   className={cn(
                     "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
-                    mobileOpen && "-rotate-45 -translate-y-[7px]"
+                    mobileOpen && "-rotate-45 -translate-y-1.75"
                   )}
                 />
               </div>
@@ -218,7 +218,7 @@ export function Navbar() {
         />
 
         {/* Menu content */}
-        <div className="relative h-full flex flex-col items-center justify-center gap-2 px-8">
+        <div className="relative h-full flex flex-col items-center justify-center gap-0.5 sm:gap-2 px-8">
           {navLinks.map((link, i) => {
             const isAnchor = link.href.startsWith("#");
             const active = isLinkActive(link);
@@ -279,7 +279,7 @@ export function Navbar() {
               href={personalInfo.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full bg-linear-to-r from-accent-blue to-accent-purple text-white transition-all duration-300"
             >
               Download Resume
             </a>
