@@ -101,6 +101,7 @@
     font-family: var(--font-body), system-ui, sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   ::selection {
@@ -169,6 +170,15 @@
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
+  }
+
+  /* iOS safe-area helpers for fixed elements */
+  .bottom-safe {
+    bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 }
 

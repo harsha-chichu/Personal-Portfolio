@@ -28,8 +28,23 @@ export function Chatbot() {
 
   useEffect(() => {
     if (isOpen) {
-      inputRef.current?.focus();
+      // Small delay so the panel finishes animating in before focusing
+      const t = setTimeout(() => inputRef.current?.focus(), 300);
+      return () => clearTimeout(t);
     }
+  }, [isOpen]);
+
+  // Lock body scroll on mobile when chatbot is open (bottom-sheet behaviour)
+  useEffect(() => {
+    const isMobile = window.innerWidth < 640;
+    if (isOpen && isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const sendMessage = async () => {
@@ -85,11 +100,21 @@ export function Chatbot() {
 
   return (
     <>
-      {/* Floating bot button */}
+      {/* Mobile backdrop — tap outside to close */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm sm:hidden"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Floating bot button — safe-area aware on iOS */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
         className={cn(
-          "fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer",
+          "fixed right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer",
           isOpen
             ? "bg-surface border border-border rotate-0"
             : "bg-gradient-to-r from-accent-blue to-accent-purple hover:shadow-accent-purple/30 hover:scale-105"
@@ -110,31 +135,61 @@ export function Chatbot() {
         )}
       </button>
 
-      {/* Chat window */}
+      {/* Chat window
+          Mobile  (<sm): full-width bottom sheet anchored to bottom-0
+          Desktop (sm+): floating panel anchored to bottom-24 right-6
+      */}
       <div
         className={cn(
-          "fixed bottom-24 right-6 z-50 w-[340px] sm:w-[380px] transition-all duration-300 origin-bottom-right",
+          // Positioning: mobile = full-width sheet from bottom, desktop = side panel
+          "fixed left-4 right-4 bottom-0 z-50",
+          "sm:left-auto sm:right-6 sm:bottom-24 sm:w-[380px]",
+          // Rounded: mobile = only top corners, desktop = all corners
+          "rounded-t-2xl sm:rounded-2xl",
+          // Animation origin
+          "origin-bottom sm:origin-bottom-right",
+          // Show/hide
+          "transition-all duration-300",
           isOpen
-            ? "scale-100 opacity-100 pointer-events-auto"
-            : "scale-90 opacity-0 pointer-events-none"
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "translate-y-4 opacity-0 pointer-events-none sm:translate-y-0 sm:scale-90"
         )}
       >
-        <div data-lenis-prevent className="rounded-2xl border border-glass-border bg-surface-95 backdrop-blur-xl shadow-2xl shadow-black/20 overflow-hidden flex flex-col max-h-[480px]">
+        {/* Pull handle — visible on mobile only */}
+        <div className="flex justify-center pt-2 pb-1 sm:hidden">
+          <div className="w-10 h-1 rounded-full bg-border" />
+        </div>
+
+        <div
+          data-lenis-prevent
+          className="rounded-t-2xl sm:rounded-2xl border border-glass-border bg-surface-95 backdrop-blur-xl shadow-2xl shadow-black/20 overflow-hidden flex flex-col max-h-[85svh] sm:max-h-[480px]"
+        >
           {/* Header */}
-          <div className="px-4 py-3 border-b border-border flex items-center gap-3">
+          <div className="px-4 py-3 border-b border-border flex items-center gap-3 shrink-0">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple flex items-center justify-center shrink-0">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                 <path d="M12 2a8 8 0 0 0-8 8c0 2.5 1.2 4.7 3 6.2V20l3.2-1.6c.6.1 1.2.1 1.8.1a8 8 0 0 0 0-16Z" />
               </svg>
             </div>
-            <div>
+            <div className="flex-1">
               <p className="text-sm font-semibold text-text-primary">Portfolio Assistant</p>
               <p className="text-xs text-accent-blue">Ask me anything</p>
             </div>
+            {/* Close button — extra tap target on mobile */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="sm:hidden w-8 h-8 rounded-lg flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-glass-hover transition-colors"
+              aria-label="Close chat"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
           </div>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[280px] max-h-[340px]">
+          {/* Messages — flex-1 so they fill available height within the svh cap */}
+          <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-3">
             {messages.map((msg, i) => (
               <div
                 key={i}
@@ -171,8 +226,8 @@ export function Chatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className="p-3 border-t border-border">
+          {/* Input — pb-safe keeps it above iOS home indicator */}
+          <div className="p-3 pb-safe sm:pb-3 border-t border-border shrink-0">
             <div className="flex items-center gap-2">
               <input
                 ref={inputRef}

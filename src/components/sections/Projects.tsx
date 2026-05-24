@@ -46,7 +46,7 @@ export function Projects() {
                 className="group p-0 h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-purple/5"
               >
                 {/* Image thumbnail */}
-                <div className="relative h-48 bg-gradient-to-br from-surface-light to-surface overflow-hidden rounded-t-2xl">
+                <div className="relative h-48 bg-linear-to-br from-surface-light to-surface overflow-hidden rounded-t-2xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={project.image}
@@ -61,7 +61,7 @@ export function Projects() {
                     }}
                   />
                   {/* Fallback — hidden when image loads successfully */}
-                  <div className="project-fallback absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center">
+                  <div className="project-fallback absolute inset-0 bg-linear-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center">
                     <span className="font-mono text-text-muted opacity-40 text-sm">
                       {project.title}
                     </span>
@@ -83,7 +83,7 @@ export function Projects() {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple text-sm text-white"
+                        className="px-4 py-2 rounded-full bg-linear-to-r from-accent-blue to-accent-purple text-sm text-white"
                       >
                         Live Demo
                       </a>
@@ -110,6 +110,32 @@ export function Projects() {
                     ))}
                   </div>
                 </div>
+
+                {/* Mobile action links — always visible on touch, hover overlay handles desktop */}
+                {(project.github || project.live) && (
+                  <div className="flex items-center gap-3 px-6 pb-5 sm:hidden">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2 text-center rounded-full glass text-sm text-text-primary border border-glass-border"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2 text-center rounded-full bg-linear-to-r from-accent-blue to-accent-purple text-sm text-white"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                )}
               </SpotlightCard>
             </div>
           ))}
