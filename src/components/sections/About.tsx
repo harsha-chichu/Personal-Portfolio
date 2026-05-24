@@ -5,10 +5,42 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { personalInfo } from "@/data/portfolio";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { GradientBlob } from "@/components/ui/GradientBlob";
-import LetterGlitch from "@/components/reactbits/LetterGlitch";
-import ScrollReveal from "@/components/reactbits/ScrollReveal";
+import { cn } from "@/lib/utils";
+
+const chapters = [
+  {
+    number: "01",
+    label: "Researcher",
+    headline: "Published in healthcare AI",
+    detail:
+      "Deep learning framework for automated WBC subtype classification — achieving pathologist-level accuracy from peripheral blood smear images.",
+    accent: "text-accent-blue",
+    bg: "bg-accent-blue/5",
+    border: "border-accent-blue/20",
+  },
+  {
+    number: "02",
+    label: "Engineer",
+    headline: "Production AI systems",
+    detail:
+      "LangGraph multi-agent orchestration, RAG pipelines, and multi-LLM architectures — built and deployed for real clients.",
+    accent: "text-accent-purple",
+    bg: "bg-accent-purple/5",
+    border: "border-accent-purple/20",
+  },
+  {
+    number: "03",
+    label: "Freelancer",
+    headline: "End-to-end delivery",
+    detail:
+      "Full-stack AI applications for startups and enterprises — from requirement to deployed product, including GenAI chatbots and booking platforms.",
+    accent: "text-accent-cyan",
+    bg: "bg-accent-cyan/5",
+    border: "border-accent-cyan/20",
+  },
+];
+
+const currentStack = ["LangGraph", "LangChain", "AWS Bedrock", "Langfuse", "PyTorch", "Next.js"];
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,22 +49,12 @@ export function About() {
     () => {
       if (!sectionRef.current) return;
 
-      gsap.from(".about-image", {
+      gsap.from(".about-section-content > *", {
         opacity: 0,
-        x: -60,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
-
-      gsap.from(".about-text", {
-        opacity: 0,
-        x: 60,
-        duration: 0.8,
-        ease: "power3.out",
+        y: 30,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.12,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 70%",
@@ -43,107 +65,88 @@ export function About() {
   );
 
   return (
-    <section id="about" ref={sectionRef} className="relative section-padding overflow-hidden">
-      <GradientBlob color="cyan" size="400px" className="top-20 right-0 opacity-10" />
-
+    <section id="about" ref={sectionRef} className="section-padding">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeading label="About Me" title="Who I Am" />
+        <SectionHeading
+          label="About Me"
+          title="My Story"
+          subtitle="The journey from research labs to production AI systems"
+        />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          {/* Image with LetterGlitch background */}
-          <div className="about-image relative">
-            <div className="relative w-full aspect-square max-w-xs sm:max-w-md mx-auto rounded-2xl overflow-hidden gradient-border">
-              <div className="absolute inset-px rounded-2xl overflow-hidden">
-                <LetterGlitch
-                  glitchColors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
-                  glitchSpeed={70}
-                  outerVignette={true}
-                  centerVignette={false}
-                  smooth={true}
-                  characters="AI ML DL NLP CNN RNN GAN GPT BERT LSTM 01"
-                />
-                {/* Profile overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    {/* Glow ring */}
-                    <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-accent-blue via-accent-purple to-accent-cyan opacity-40 blur-lg" />
-                    <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-glass-border shadow-2xl shadow-accent-purple/20">
-                      <img
-                        src={personalInfo.avatar}
-                        alt={personalInfo.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          target.style.display = "none";
-                          target.parentElement!.classList.add(
-                            "bg-gradient-to-br",
-                            "from-accent-blue/20",
-                            "to-accent-purple/20",
-                            "flex",
-                            "items-center",
-                            "justify-center"
-                          );
-                          const span = document.createElement("span");
-                          span.className = "text-6xl";
-                          span.textContent = personalInfo.name
-                            .split(" ")
-                            .map((w) => w[0])
-                            .join("");
-                          target.parentElement!.appendChild(span);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Status badge */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-surface-90 backdrop-blur-sm px-4 py-2 rounded-full border border-border">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
-              </span>
-              <span className="text-xs font-mono text-text-secondary">Available for freelance</span>
-            </div>
-          </div>
+        <div className="about-section-content flex flex-col gap-8">
+          {/* ── Bio paragraph ── */}
+          <p className="text-text-secondary text-lg leading-relaxed max-w-3xl">
+            {personalInfo.bio[0]}
+          </p>
 
-          {/* Text with ScrollReveal */}
-          <div className="about-text">
-            {personalInfo.bio.map((paragraph, i) => (
-              <ScrollReveal
-                key={i}
-                enableBlur={true}
-                baseOpacity={0.15}
-                baseRotation={2}
-                blurStrength={3}
+          {/* ── Three chapter cards ── */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {chapters.map((c) => (
+              <div
+                key={c.number}
+                className={cn(
+                  "glass rounded-2xl p-6 border flex flex-col gap-3",
+                  c.border
+                )}
               >
-                {paragraph}
-              </ScrollReveal>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-text-muted">{c.number}</span>
+                  <span
+                    className={cn(
+                      "font-mono text-xs font-semibold uppercase tracking-wider",
+                      c.accent
+                    )}
+                  >
+                    {c.label}
+                  </span>
+                </div>
+                <h4 className="font-heading text-lg font-bold text-text-primary">
+                  {c.headline}
+                </h4>
+                <p className="text-text-secondary text-sm leading-relaxed">{c.detail}</p>
+              </div>
             ))}
+          </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-6 sm:mt-8">
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <span className="text-accent-blue">&#9993;</span>
+          {/* ── "Currently working with" bar ── */}
+          <div className="glass rounded-2xl p-6 border border-glass-border">
+            <p className="text-xs font-mono text-text-muted uppercase tracking-[0.15em] mb-4">
+              // currently working with
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {currentStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 rounded-lg bg-overlay border border-glass-border text-xs font-mono text-text-secondary"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-text-muted font-mono">
+              <span>📍 {personalInfo.location}</span>
+              <span className="opacity-40 hidden sm:inline">·</span>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="hover:text-accent-blue transition-colors"
+              >
                 {personalInfo.email}
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <span className="text-accent-purple">&#128205;</span>
-                {personalInfo.location}
-              </div>
+              </a>
             </div>
           </div>
-        </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-border">
-          {personalInfo.stats.map((stat) => (
-            <AnimatedCounter
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-            />
-          ))}
+          {/* ── Stats row ── */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-border">
+            {personalInfo.stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="font-heading text-4xl font-bold text-text-primary">
+                  {stat.value}
+                  <span className="gradient-text">{stat.suffix}</span>
+                </p>
+                <p className="text-text-muted text-xs font-mono mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

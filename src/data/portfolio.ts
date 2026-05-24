@@ -86,7 +86,7 @@ export interface NavLink {
 // ── Data ──
 
 export const personalInfo: PersonalInfo = {
-  name: "Harshavardhan Sunnam",
+  name: "Harshavardhan",
   title: "AI Engineer & Freelancer",
   tagline: "Building intelligent systems that push the boundaries of what's possible",
   bio: [
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     title: "ACORD Document Extraction Pipeline",
     description:
       "Multi-stage LOB identification and extraction pipeline using PageIndex retrieval and regex pattern matching. Integrates Gemini Vision API and GPT-4o with PyMuPDF and Camelot, deployed on Kubernetes for US-based insurance brokers.",
-    image: "/project1.png",
+    image: "/project2.png",
     tags: ["PageIndex", "Gemini Vision", "GPT-4o", "Kubernetes", "Python"],
     featured: true,
   },
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     title: "Artist Portfolio & Booking Platform",
     description:
       "Full-stack portfolio and booking platform with real-time booking workflows, custom admin dashboard enabling 80+ booking interactions, and a GenAI chatbot built with LangChain, RAG, and vector databases.",
-    image: "/project1.png",
+    image: "/project3.png",
     tags: ["Next.js", "TailwindCSS", "Supabase", "LangChain", "RAG"],
     live: "https://1klick2digiworld.com/",
     featured: false,
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     title: "Movie Story Generator",
     description:
       "AI-powered React app that transforms a single user-provided plot into a complete movie storyline, suggests ideal cast members, and generates a custom movie poster using AI.",
-    image: "/project1.png",
+    image: "/project4.png",
     tags: ["React", "JavaScript", "AI", "Generative AI"],
     featured: false,
   },

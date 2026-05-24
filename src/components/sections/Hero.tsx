@@ -2,83 +2,148 @@
 
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "@/components/ui/Button";
-import { ParticleField } from "@/components/ui/ParticleField";
 import { GradientBlob } from "@/components/ui/GradientBlob";
-import BlurText from "@/components/reactbits/BlurText";
-import DecryptedText from "@/components/reactbits/DecryptedText";
-import Magnet from "@/components/reactbits/Magnet";
+
+// Top skills shown in the right identity card
+const coreStack = ["Python", "LangChain", "LangGraph", "PyTorch", "Next.js", "AWS"];
+
+// First sentence of bio for the hero
+const heroBio = personalInfo.bio[0].split(".")[0] + ".";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background */}
-      <ParticleField />
-      <GradientBlob color="purple" size="600px" className="-top-40 -right-40 opacity-30" />
-      <GradientBlob color="blue" size="500px" className="-bottom-40 -left-40 opacity-20" />
+      {/* Background blobs — no particle field */}
+      <GradientBlob color="purple" size="600px" className="-top-40 -right-40 opacity-25" />
+      <GradientBlob color="blue" size="500px" className="-bottom-40 -left-40 opacity-15" />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
-        {/* Decrypted subtitle role */}
-        <div className="mb-4 sm:mb-6 h-8">
-          <span className="font-mono text-xs sm:text-sm tracking-widest uppercase text-accent-blue">
-            <DecryptedText
-              text="AI Engineer | Freelancer"
-              animateOn="view"
-              speed={40}
-              maxIterations={15}
-              sequential={true}
-              revealDirection="center"
-              className="text-accent-blue"
-              encryptedClassName="text-accent-purple"
-              characters="01<>/{}[]&|#@$"
-            />
-          </span>
-        </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-24 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        {/* Name heading with blur reveal */}
-        <BlurText
-          text={personalInfo.name}
-          delay={150}
-          animateBy="words"
-          direction="bottom"
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight justify-center"
-          stepDuration={0.5}
-        />
+          {/* ── Left: Text content ── */}
+          <div className="text-center lg:text-left">
 
-        {/* Tagline */}
-        <BlurText
-          text={personalInfo.tagline}
-          delay={80}
-          animateBy="words"
-          direction="top"
-          className="text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4 sm:mt-6 mb-8 sm:mb-10 leading-relaxed justify-center"
-          stepDuration={0.4}
-        />
+            {/* Greeting */}
+            <p className="font-mono text-sm text-text-muted mb-5 tracking-wide">
+              Hi, I&apos;m 👋
+            </p>
 
-        {/* Magnetic CTAs */}
-        <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
-          <Magnet padding={30} magnetStrength={3}>
-            <Button variant="primary" href="#projects">
-              View My Work
-            </Button>
-          </Magnet>
-          <Magnet padding={30} magnetStrength={3}>
-            <Button variant="outline" href="#contact">
-              Get In Touch
-            </Button>
-          </Magnet>
-        </div>
+            {/* Name */}
+            <h1 className="font-heading font-bold leading-tight">
+              <span className="block text-5xl sm:text-6xl lg:text-7xl text-text-primary">
+                {personalInfo.name.split(" ")[0]}
+              </span>
+              <span className="block text-5xl sm:text-6xl lg:text-7xl gradient-text">
+                {personalInfo.name.split(" ")[1]}.
+              </span>
+            </h1>
 
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          style={{ animation: "bounce-down 2s ease-in-out infinite" }}
-        >
-          <span className="text-text-muted text-xs font-mono">scroll</span>
-          <div className="w-px h-8 bg-linear-to-b from-text-muted to-transparent" />
+            {/* Role pills */}
+            <div className="flex flex-wrap gap-2 mt-5 justify-center lg:justify-start">
+              {["AI Engineer", "Researcher", "Freelancer"].map((role) => (
+                <span
+                  key={role}
+                  className="px-3 py-1 rounded-full text-xs font-mono border border-glass-border bg-glass-bg text-text-secondary"
+                >
+                  {role}
+                </span>
+              ))}
+            </div>
+
+            {/* Bio */}
+            <p className="text-text-secondary text-base sm:text-lg leading-relaxed mt-6 max-w-xl mx-auto lg:mx-0">
+              {heroBio}
+            </p>
+
+            {/* CTA buttons */}
+            <div className="flex items-center gap-4 mt-8 justify-center lg:justify-start flex-wrap">
+              <Button variant="primary" href="#projects">
+                View My Work
+              </Button>
+              <Button variant="outline" href="#contact">
+                Get In Touch
+              </Button>
+            </div>
+
+            {/* Social + location */}
+            <div className="flex items-center gap-3 mt-6 justify-center lg:justify-start flex-wrap">
+              {personalInfo.socials.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg glass text-xs font-mono text-text-muted hover:text-accent-blue transition-colors"
+                  aria-label={social.platform}
+                >
+                  {social.platform}
+                </a>
+              ))}
+              <span className="text-text-muted text-xs font-mono opacity-60">
+                · {personalInfo.location}
+              </span>
+            </div>
+          </div>
+
+          {/* ── Right: Identity card — desktop only ── */}
+          <div className="hidden lg:flex flex-col gap-4">
+            <div className="glass rounded-2xl p-6 border border-glass-border">
+
+              {/* Card header */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full bg-linear-to-r from-accent-blue to-accent-purple shrink-0" />
+                <span className="font-mono text-sm text-text-primary font-medium">
+                  {personalInfo.title}
+                </span>
+                <div className="ml-auto flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                  <span className="text-xs font-mono text-green-400">Open to work</span>
+                </div>
+              </div>
+
+              {/* Stats grid */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {personalInfo.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="bg-overlay rounded-xl p-4 border border-glass-border"
+                  >
+                    <p className="font-heading text-2xl font-bold text-text-primary">
+                      {stat.value}{stat.suffix}
+                    </p>
+                    <p className="text-text-muted text-xs font-mono mt-1 leading-snug">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-border mb-5" />
+
+              {/* Core stack */}
+              <p className="text-text-muted text-xs font-mono mb-3">// core stack</p>
+              <div className="flex flex-wrap gap-2">
+                {coreStack.map((name) => (
+                  <span
+                    key={name}
+                    className="px-2.5 py-1 rounded-lg text-xs font-mono bg-accent-purple/10 text-accent-purple"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Availability note */}
+            <p className="text-center text-xs font-mono text-text-muted">
+              📍 {personalInfo.location} · Available for freelance projects
+            </p>
+          </div>
+
         </div>
       </div>
     </section>

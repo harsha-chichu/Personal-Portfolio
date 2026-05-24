@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { navLinks, personalInfo } from "@/data/portfolio";
@@ -11,9 +11,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/";
@@ -26,14 +24,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      setScrolled(currentY > 50);
-      if (currentY > 100) {
-        setHidden(currentY > lastScrollY.current && currentY - lastScrollY.current > 5);
-      } else {
-        setHidden(false);
-      }
-      lastScrollY.current = currentY;
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -80,13 +71,8 @@ export function Navbar() {
 
   return (
     <>
-      <nav
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
-        )}
-      >
-        {/* Desktop floating pill navbar */}
+      {/* Always-visible sticky navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-4">
           <div
             className={cn(
@@ -96,9 +82,10 @@ export function Navbar() {
                 : "bg-transparent"
             )}
           >
-            {/* Logo */}
-            <Link
-              href="/"
+            {/* Logo — clicks scroll to #hero */}
+            <a
+              href="#hero"
+              onClick={(e) => handleAnchorClick(e, "#hero")}
               className="font-heading text-xl font-bold shrink-0"
             >
               <ShinyText
@@ -108,7 +95,7 @@ export function Navbar() {
                 shineColor="#8b5cf6"
                 className="font-heading text-xl font-bold"
               />
-            </Link>
+            </a>
 
             {/* Desktop Links - centered pill group */}
             <div className="hidden lg:flex items-center gap-1 bg-glass-bg rounded-xl px-2 py-1.5 border border-glass-border">
@@ -171,33 +158,36 @@ export function Navbar() {
               </a>
             </div>
 
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-glass-hover transition-colors"
-              aria-label="Toggle menu"
-            >
-              <div className="relative w-5 h-4 flex flex-col justify-between">
-                <span
-                  className={cn(
-                    "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
-                    mobileOpen && "rotate-45 translate-y-1.75"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-3 h-0.5 rounded-full bg-text-primary transition-all duration-300 ml-auto",
-                    mobileOpen && "opacity-0 w-0"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
-                    mobileOpen && "-rotate-45 -translate-y-1.75"
-                  )}
-                />
-              </div>
-            </button>
+            {/* Mobile: Theme toggle + Hamburger */}
+            <div className="lg:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-glass-hover transition-colors"
+                aria-label="Toggle menu"
+              >
+                <div className="relative w-5 h-4 flex flex-col justify-between">
+                  <span
+                    className={cn(
+                      "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
+                      mobileOpen && "rotate-45 translate-y-1.75"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block w-3 h-0.5 rounded-full bg-text-primary transition-all duration-300 ml-auto",
+                      mobileOpen && "opacity-0 w-0"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block w-full h-0.5 rounded-full bg-text-primary transition-all duration-300 origin-center",
+                      mobileOpen && "-rotate-45 -translate-y-1.75"
+                    )}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -262,7 +252,7 @@ export function Navbar() {
             );
           })}
 
-          {/* Theme toggle + Resume link in mobile menu */}
+          {/* Resume link in mobile menu */}
           <div
             className={cn(
               "mt-6 flex items-center gap-4 transition-all duration-300",
@@ -274,7 +264,6 @@ export function Navbar() {
               transitionDelay: mobileOpen ? `${navLinks.length * 50}ms` : "0ms",
             }}
           >
-            <ThemeToggle />
             <a
               href={personalInfo.resume}
               target="_blank"
