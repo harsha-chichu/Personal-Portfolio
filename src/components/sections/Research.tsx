@@ -32,7 +32,7 @@ export function Research() {
   );
 
   return (
-    <section id="research" ref={sectionRef} className="relative section-padding">
+    <section id="research" ref={sectionRef} className="relative section-padding overflow-hidden">
       <GradientBlob color="blue" size="500px" className="-left-60 top-40 opacity-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">

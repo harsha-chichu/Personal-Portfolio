@@ -51,7 +51,7 @@ export function Achievements() {
   );
 
   return (
-    <section id="achievements" ref={sectionRef} className="relative section-padding">
+    <section id="achievements" ref={sectionRef} className="relative section-padding overflow-hidden">
       <GradientBlob
         color="purple"
         size="400px"

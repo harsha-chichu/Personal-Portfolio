@@ -131,7 +131,7 @@ export function Contact() {
           onClose={() => setToast(null)}
         />
       )}
-    <section id="contact" ref={sectionRef} className="relative section-padding">
+    <section id="contact" ref={sectionRef} className="relative section-padding overflow-hidden">
       <GradientBlob color="cyan" size="400px" className="-left-40 bottom-0 opacity-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
