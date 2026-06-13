@@ -94,7 +94,7 @@ export const personalInfo: PersonalInfo = {
   ],
   email: "harshachinnu129@gmail.com",
   location: "Bangalore, India",
-  avatar: "https://easydrawingguides.com/wp-content/uploads/2019/03/how-to-draw-katsuki-bakugou-from-my-hero-academia-featured-image-1200-735x1026.png",
+  avatar: "/avatar.jpg",
   resume: "/resume.pdf",
   stats: [
     { label: "Years Experience", value: 1, suffix: "+" },
