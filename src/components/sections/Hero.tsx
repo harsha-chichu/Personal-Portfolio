@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "@/components/ui/Button";
 import { GradientBlob } from "@/components/ui/GradientBlob";
@@ -91,6 +92,19 @@ export function Hero() {
           {/* ── Right: Identity card — desktop only ── */}
           <div className="hidden lg:flex flex-col gap-4">
             <div className="glass rounded-2xl p-6 border border-glass-border">
+
+              {/* Avatar */}
+              <div className="flex justify-center mb-5">
+                <div className="relative w-24 h-24 rounded-full overflow-hidden ring-2 ring-accent-purple/40">
+                  <Image
+                    src={personalInfo.avatar}
+                    alt={personalInfo.name}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
 
               {/* Card header */}
               <div className="flex items-center gap-3 mb-6">
