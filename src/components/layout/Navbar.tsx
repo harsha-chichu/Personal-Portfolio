@@ -150,8 +150,7 @@ export function Navbar() {
               <ThemeToggle />
               <a
                 href={personalInfo.resume}
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Harshavardhan_Resume.pdf"
                 className="inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-lg bg-linear-to-r from-accent-blue to-accent-purple text-white hover:shadow-lg hover:shadow-accent-purple/25 transition-all duration-300 hover:-translate-y-0.5"
               >
                 Resume
@@ -266,8 +265,7 @@ export function Navbar() {
           >
             <a
               href={personalInfo.resume}
-              target="_blank"
-              rel="noopener noreferrer"
+              download="Harshavardhan_Resume.pdf"
               className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full bg-linear-to-r from-accent-blue to-accent-purple text-white transition-all duration-300"
             >
               Download Resume
